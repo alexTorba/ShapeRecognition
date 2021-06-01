@@ -4,6 +4,8 @@ from typing import Dict
 
 
 # noinspection PyDeepBugsSwappedArgs
+
+
 class JsonContract(ABC):
     """Each class that will override this class must have :\n
     - annotations for all fields\n
@@ -32,3 +34,7 @@ class JsonContract(ABC):
     def json_to_field(self, min_field: str) -> str:
         """convert minimize field to full name field"""
         return self.__json_fields.get(min_field)
+
+    def to_json_str(self) -> str:
+        from Common.JsonFormatterModule.JsonFormatter import JsonFormatter  # to avoid cycle dependencies
+        return JsonFormatter.serialize(self)

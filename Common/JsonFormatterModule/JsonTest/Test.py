@@ -50,6 +50,16 @@ class TestSerialize(unittest.TestCase):
         self.assertTrue(c2 == c1)
         self.assertFalse(c1 is c2)
 
+    def test_self_serializing(self):
+        ch = Character(18, 100)
+        json_ch = ch.to_json_str()
+        self.assertTrue(json_ch)
+
+        ch2 = JsonFormatter.deserialize(json_ch, Character)
+        self.assertTrue(ch2)
+        self.assertTrue(ch2 == ch)
+        self.assertFalse(ch is ch2)
+
 
 if __name__ == '__main__':
     unittest.main()
