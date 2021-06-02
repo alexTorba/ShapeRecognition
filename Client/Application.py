@@ -1,16 +1,12 @@
-from PyQt5 import QtWidgets
-import sys
-
-from Client.ui_main_window import Ui_MainWindow
+from Client.Presenter.Main.MainPresenter import MainPresenter
+from Client.View.Main.MainView import MainView
+from Client.View.Main.ui_main_window import Ui_MainWindow
 
 
 class Application:
+    def __init__(self):
+        self._view = MainView(Ui_MainWindow())
+        self._presenter = MainPresenter(self._view)
+
     def start(self):
-        app = QtWidgets.QApplication(sys.argv)
-        window = QtWidgets.QMainWindow()
-
-        ui = Ui_MainWindow()
-        ui.setupUi(window)
-
-        window.show()
-        sys.exit(app.exec())
+        self._view.start()

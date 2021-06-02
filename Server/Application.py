@@ -1,5 +1,5 @@
-from Common.NetworkModule.Handlers.MethodHandler import MethodHandler
-from Common.NetworkModule.Managers.NetworkManager import NetworkManager
+from Shared.Common.NetworkModule.Handlers.MethodHandler import MethodHandler
+from Shared.Common.NetworkModule.Managers.NetworkManager import NetworkManager
 
 
 # noinspection PyAttributeOutsideInit
